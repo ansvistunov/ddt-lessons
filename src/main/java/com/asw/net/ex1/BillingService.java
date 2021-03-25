@@ -32,10 +32,10 @@ public class BillingService extends Thread {
     public void run() {
         try {
             ss = new ServerSocket(serverPort);
-            System.out.println("Server started");
+            System.out.println("RMIServer started");
             while (true) {
                 Socket s = ss.accept();
-                System.out.println("Client accepted");
+                System.out.println("RMIClient accepted");
                 BillingClientService bcs = new BillingClientService(this,
                         new DataInputStream(s.getInputStream()), new DataOutputStream(s.getOutputStream()));
                 bcs.start();

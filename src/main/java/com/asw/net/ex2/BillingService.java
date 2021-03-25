@@ -21,11 +21,11 @@ public class BillingService extends Thread {
     public void run() {
         try {
             ss = new ServerSocket(serverPort);
-            System.out.println("Server started");
+            System.out.println("RMIServer started");
             while (true) {
                 System.out.println("new client waiting...");
                 Socket s = ss.accept();
-                System.out.println("Client accepted");
+                System.out.println("RMIClient accepted");
                 BillingClientService bcs = new BillingClientService(this, s);
                 System.out.println("bcs created");
                 bcs.start();
