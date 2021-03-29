@@ -8,11 +8,9 @@ public class RMIServer2 extends UnicastRemoteObject implements Hello {
     public RMIServer2() throws java.rmi.RemoteException {
         super();
     }
-
     public String sayHello() {
         return "Hello, world!";
     }
-
     public static void main(String args[]) {
         try {
             RMIServer2 obj = new RMIServer2();

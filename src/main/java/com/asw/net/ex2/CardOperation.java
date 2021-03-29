@@ -9,8 +9,8 @@ public class CardOperation implements Serializable {
         this.amount = amount;
         this.operationDate = operationDate;
     }
-    public String card;
-    public double amount;
-    public Date operationDate;
+    public final String card;
+    public final double amount;
+    public final Date operationDate;
 }
 

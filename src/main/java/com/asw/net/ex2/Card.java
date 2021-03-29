@@ -12,11 +12,12 @@ public class Card implements Serializable {
         this.balance = balance;
     }
 
-    public String person;
-    public transient Date createDate;
-    public String cardNumber;
+    public final String person;
+    public final transient Date createDate;
+    public final String cardNumber;
     public double balance;
 
+    @Override
     public String toString() {
         return "Card:cardNumber=" + cardNumber + "\tBalance="
                 + balance + "\tPerson=" + person + "\tCreateDate=" + createDate + "";

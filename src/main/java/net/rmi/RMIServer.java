@@ -1,5 +1,4 @@
 package net.rmi;
-
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
@@ -8,7 +7,6 @@ public class RMIServer implements Hello {
     public String sayHello() {
         return "Hello, world!";
     }
-
     public static void main(String args[]) {
         try {
             RMIServer obj = new RMIServer();
