@@ -22,8 +22,15 @@ public class Server implements RemoteServer{
     @Override
     public void registry(RemoteServer server, String name) {
         try {
+            System.out.println("begin registry...");
             registry.rebind(name, server);
             System.out.println("Client registered with name "+name + " "+server);
+            System.out.println("try call method...");
+            try{
+                System.out.println(server.sayHello());
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
