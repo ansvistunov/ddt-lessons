@@ -6,12 +6,13 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Server implements RemoteServer{
+public class Server extends UnicastRemoteObject implements RemoteServer{
     Registry registry;
     static int port = 9090;
     static String serverName = "Server";
 
-    public Server(){
+    public Server() throws RemoteException {
+        super(port);
         try {
             registry = LocateRegistry.createRegistry(port);
         } catch (RemoteException e) {
@@ -43,9 +44,8 @@ public class Server implements RemoteServer{
 
     public static void main(String[] args) throws Exception{
         Server server = new Server();
-        RemoteServer remoteServer = (RemoteServer) UnicastRemoteObject.exportObject(server,8181);
-        server.registry(remoteServer, serverName);
-        System.out.println("Server started on port "+port +" "+remoteServer);
+        server.registry(server, serverName);
+        System.out.println("Server started on port "+port +" "+server);
     }
 
 }
