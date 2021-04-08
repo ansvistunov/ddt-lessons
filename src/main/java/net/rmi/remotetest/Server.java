@@ -9,12 +9,11 @@ import java.rmi.server.UnicastRemoteObject;
 public class Server implements RemoteServer{
     Registry registry;
     static int port = 9090;
-    String serverName = "Server";
+    static String serverName = "Server";
 
     public Server(){
         try {
             registry = LocateRegistry.createRegistry(port);
-            registry.rebind(serverName, UnicastRemoteObject.exportObject(this,0));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -35,9 +34,11 @@ public class Server implements RemoteServer{
         return "Hello from server";
     }
 
-    public static void main(String[] args) {
-        new Server();
-        System.out.println("Server started on port "+port );
+    public static void main(String[] args) throws Exception{
+        Server server = new Server();
+        RemoteServer remoteServer = (RemoteServer) UnicastRemoteObject.exportObject(server,0);
+        server.registry(remoteServer, serverName);
+        System.out.println("Server started on port "+port +" "+remoteServer);
     }
 
 }
