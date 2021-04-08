@@ -23,7 +23,7 @@ public class Server implements RemoteServer{
     public void registry(RemoteServer server, String name) {
         try {
             registry.rebind(name, server);
-            System.out.println("Client registered with name "+name);
+            System.out.println("Client registered with name "+name + " "+server);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

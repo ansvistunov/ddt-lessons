@@ -24,7 +24,7 @@ public class Client implements RemoteServer{
         Registry registry = LocateRegistry.getRegistry(serverHost, port);
         Registry localregistry = LocateRegistry.createRegistry(8080);
         RemoteServer server = (RemoteServer) registry.lookup("Server");
-        System.out.println("server refarence="+server);
+        System.out.println("server reference="+server);
         Client localClient= new Client();
 
         RemoteServer client = (RemoteServer) UnicastRemoteObject.exportObject(localClient,0);
