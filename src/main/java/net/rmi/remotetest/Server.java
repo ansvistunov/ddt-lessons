@@ -36,7 +36,7 @@ public class Server implements RemoteServer{
 
     public static void main(String[] args) throws Exception{
         Server server = new Server();
-        RemoteServer remoteServer = (RemoteServer) UnicastRemoteObject.exportObject(server,20);
+        RemoteServer remoteServer = (RemoteServer) UnicastRemoteObject.exportObject(server,8181);
         server.registry(remoteServer, serverName);
         System.out.println("Server started on port "+port +" "+remoteServer);
     }
