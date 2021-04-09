@@ -19,9 +19,12 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	/* (non-Javadoc)
 	 * @see com.asw.rmi.ex1.BillingService#addNewCard(java.lang.String)
 	 */
+	public static final int registryPort = 8080;
+	public static final int proxyPort = 443;
+
 	private	HashMap<String, Double> hash;
 	public BillingServiceImpl() throws RemoteException{
-		super();
+		super(proxyPort);
 		hash = new HashMap<>();
 	}
 	public void addNewCard(String personName, String card) throws RemoteException {
@@ -33,7 +36,7 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	 */
 	public void addMoney(String card, double money) throws RemoteException {
 		Double d = hash.get(card);
-		if (d!=null) hash.put(card,d.doubleValue()+money);
+		if (d != null) hash.put(card,d.doubleValue()+money);
 		else throw new NotExistsCardOperation();
 	}
 
@@ -42,21 +45,22 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	 */
 	public void subMoney(String card, double money) throws RemoteException {
 		Double d = hash.get(card);
-		if (d!=null) hash.put(card,d.doubleValue()-money);
+		if (d != null) hash.put(card,d.doubleValue()-money);
 		else throw new NotExistsCardOperation();
 	}
 	
 	public double getCardBalance(String card) throws RemoteException{
 		Double d = hash.get(card);
-		if (d!=null) return d.doubleValue();
+		if (d != null) return d.doubleValue();
 		else throw new NotExistsCardOperation();
 	};
 	
 	public static void main (String[] args) throws Exception {
-		System.out.println("Initializing BillingService...");
+		System.out.println(String.format("Initializing BillingService...\nregistry port:%d, proxy port:%d", registryPort, proxyPort));
 		BillingService service = new BillingServiceImpl();
-		String serviceName = "rmi://localhost/BillingService";
+		String serviceName = "rmi://localhost:"+registryPort+"/BillingService";
 		Naming.rebind(serviceName, service);
+		System.out.println("done");
 	}
 
 }

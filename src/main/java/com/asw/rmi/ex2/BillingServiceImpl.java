@@ -19,13 +19,15 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	/* (non-Javadoc)
 	 * @see com.asw.rmi.ex1.BillingService#addNewCard(java.lang.String)
 	 */
+	public static final int registryPort = 8080;
+	public static final int proxyPort = 443;
+
 	private	HashMap<String, Card> hash;
 	public BillingServiceImpl() throws RemoteException{
-		super();
+		super(proxyPort);
 		hash = new HashMap<>();
 	}
 	public void addNewCard(Card card) throws RemoteException {
-		
 		hash.putIfAbsent(card.cardNumber, card);
 	}
 
@@ -33,11 +35,10 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	 * @see com.asw.rmi.ex1.BillingService#addMoney(java.lang.String, double)
 	 */
 	public void processOperations(CardOperation[] operations) throws RemoteException {
-		for (int i=0;i<operations.length;i++){
+		for (int i = 0;i < operations.length; i++){
 			Card c = hash.get(operations[i].card);
-			if (c==null) throw new NotExistsCardOperation();
-			c.balance+=operations[i].amount;
-			hash.put(operations[i].card,c);
+			if (c == null) throw new NotExistsCardOperation();
+			c.balance += operations[i].amount;
 		}
 	}
 
@@ -51,8 +52,9 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	public static void main (String[] args) throws Exception {
 		System.out.println("Initializing BillingService...");
 		BillingService service = new BillingServiceImpl();
-		String serviceName = "rmi://localhost/BillingService";
+		String serviceName = "rmi://localhost:"+registryPort+"/BillingService";
 		Naming.rebind(serviceName, service);
+		System.out.println("done");
 	}
 
 }

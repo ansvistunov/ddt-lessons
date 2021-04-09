@@ -17,10 +17,10 @@ import java.rmi.*;
 public class BillingClient2 {
 
 	public static void main(String[] args) throws Exception{
-		String objectName = "rmi://"+args[0]+"/BillingService";
-		System.out.println("Starting...\n");
+		String objectName = "rmi://"+args[0]+":"+BillingServiceImpl.registryPort+"/BillingService";
+		System.out.println("Starting client...\n");
 		BillingService bs = (BillingService)Naming.lookup(objectName);
-		System.out.println("done");
+		System.out.println("done. proxy="+bs);
 		
 		for (int i = 0; i < 10000; i++) {
 			try {
@@ -38,6 +38,7 @@ public class BillingClient2 {
 			} catch (RemoteException e) {
 				bs.addNewCard("Nataly", "3");
 			}
+			if (i % 100 == 0) System.out.println(i+" operation done");
 		}
 		
 		System.out.println("1:"+bs.getCardBalance("1"));

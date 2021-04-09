@@ -18,32 +18,32 @@ import java.util.Date;
 public class BillingClient2 {
 
 	public static void main(String[] args) throws Exception{
-		String objectName = "rmi://"+args[0]+"/BillingService";
+		String objectName = "rmi://"+args[0]+":"+BillingServiceImpl.registryPort+"/BillingService";
 		System.out.println("Starting...\n");
 		BillingService bs = (BillingService)Naming.lookup(objectName);
-		System.out.println("done");
+		System.out.println("done. proxy="+bs);
 		Card c;
 		c = bs.getCard("1");
-		if (c==null) {
+		if (c == null) {
 			c = new Card("Piter",new Date(),"1",0.0);
 			bs.addNewCard(c);	
 		}
 		
 		
 		c = bs.getCard("2");
-		if (c==null) {
+		if (c == null) {
 			c = new Card("Stefan",new Date(),"2",0.0);
 			bs.addNewCard(c);
 		}
 			
 		c = bs.getCard("3");
-		if (c==null) {
+		if (c == null) {
 			c = new Card("Nataly",new Date(),"3",0.0);
 			bs.addNewCard(c);
 		}
 		
-		System.err.println("begin...\n");
-		//String person, Date createDate, String cardNumber,double balance
+		System.err.println("cards created. begin operations...\n");
+
 		int cnt = 30000;
 		CardOperation[] co = new CardOperation[cnt];
 		for (int i = 0; i < cnt; i++) {
@@ -52,7 +52,6 @@ public class BillingClient2 {
 			case 1:	co[i] = new CardOperation("2",1,new Date());break;
 			case 2:	co[i] = new CardOperation("3",1,new Date());break;
 			}
-			//String card,double amount,Date operationDate
 		}
 		bs.processOperations(co);
 		///

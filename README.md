@@ -6,3 +6,11 @@ java  -Djava.rmi.server.codebase="http://localhost:8000/"  -Djava.security.polic
 
 ќЅя«ј“≈Ћ№Ќќ ставить слэш в конце имени ресурса в java.rmi.server.codebase.
 ќЅя«ј“≈Ћ№Ќќ нужно разрешать соединение дл€ загруженных классов (гранты прописываютс€ в файле security.policy)
+
+≈сли нужно организовать запуск rmiregistry, то он должен быть таким:
+rmiregistry.exe -J-Djava.rmi.server.codebase=http://localhost:8000/ 8080
+
+ƒл€ того, чтобы в прокси-объекте указать ip узла, с которым он будет взаимодействовать - указываем параметр java.rmi.server.hostname
+например, вот так:
+java -classpath target/classes -Djava.rmi.server.hostname=132.145.228.39 com.asw.rmi.ex1.BillingServiceImpl
+

@@ -17,7 +17,7 @@ import java.rmi.*;
 public class BillingClient {
 
 	public static void main(String[] args) throws Exception{
-		String objectName = "rmi://"+args[0]+"/BillingService";
+		String objectName = "rmi://"+args[0]+":"+BillingServiceImpl.registryPort+"/BillingService";
 		BillingService bs = (BillingService)Naming.lookup(objectName);
 		bs.addNewCard("Piter","1");
 		bs.addNewCard("Stefan","2");
