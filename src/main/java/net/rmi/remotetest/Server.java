@@ -39,7 +39,7 @@ public class Server extends UnicastRemoteObject implements RemoteServer{
 
     @Override
     public String sayHello() {
-        return "Hello from server";
+        return "HelloServer from server";
     }
 
     public static void main(String[] args) throws Exception{

@@ -9,7 +9,7 @@ public class RMIServer2 extends UnicastRemoteObject implements Hello {
         super();
     }
     public String sayHello() {
-        return "Hello, world!";
+        return "HelloServer, world!";
     }
     public static void main(String args[]) {
         try {
@@ -17,8 +17,8 @@ public class RMIServer2 extends UnicastRemoteObject implements Hello {
             // Bind the remote object's stub in the registry
             //Registry registry = LocateRegistry.getRegistry(); //connect to exist registry
             Registry registry = LocateRegistry.createRegistry(8080); //start registry on this host
-            registry.bind("Hello", obj);
-            //Naming.rebind("rmi://localhost/Hello",obj);
+            registry.bind("HelloServer", obj);
+            //Naming.rebind("rmi://localhost/HelloServer",obj);
             System.out.println("RMIServer ready");
         } catch (Exception e) {
             System.err.println("RMIServer exception: " + e.toString());

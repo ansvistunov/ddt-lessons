@@ -12,7 +12,7 @@ public class CallStaticMethod {
         System.out.println(callStaticMethod(CallStaticMethod.class, "testCall",
                 new Class[]{String.class}, new Object[]{"Java"}));
     }
-    public static String testCall(String name) {return "Hello, "+name;}
+    public static String testCall(String name) {return "HelloServer, "+name;}
 
     static Object callStaticMethod(Class clasz, String methodName, Class[] classArgs, Object[] args){
         try {

@@ -11,7 +11,7 @@ public class RMIClient {
         try {
             Registry registry = LocateRegistry.getRegistry(host, port);
             System.out.println("registry :"+host+":"+port);
-            Hello stub = (Hello) registry.lookup("Hello");
+            Hello stub = (Hello) registry.lookup("HelloServer");
             System.out.println(stub);
             String response = stub.sayHello();
             System.out.println("response: " + response);

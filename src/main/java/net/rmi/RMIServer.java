@@ -5,7 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class RMIServer implements Hello {
     public String sayHello() {
-        return "Hello, world!";
+        return "HelloServer, world!";
     }
     public static void main(String args[]) {
         try {
@@ -14,7 +14,7 @@ public class RMIServer implements Hello {
             // Bind the remote object's stub in the registry
             //Registry registry = LocateRegistry.getRegistry(); //connect to exist registry
             Registry registry = LocateRegistry.createRegistry(8080); //start registry on this host
-            registry.bind("Hello", stub);
+            registry.bind("HelloServer", stub);
             System.out.println("RMIServer ready");
         } catch (Exception e) {
             System.err.println("RMIServer exception: " + e.toString());

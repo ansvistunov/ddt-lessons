@@ -17,7 +17,7 @@ public class Client implements RemoteServer{
 
     @Override
     public String sayHello() throws RemoteException {
-        return "Hello from client";
+        return "HelloServer from client";
     }
 
     public static void main(String[] args) throws Exception{

@@ -36,7 +36,7 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	 */
 	public void addMoney(String card, double money) throws RemoteException {
 		Double d = hash.get(card);
-		if (d != null) hash.put(card,d.doubleValue()+money);
+		if (d != null) hash.put(card,d.doubleValue() + money);
 		else throw new NotExistsCardOperation();
 	}
 
@@ -45,7 +45,7 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	 */
 	public void subMoney(String card, double money) throws RemoteException {
 		Double d = hash.get(card);
-		if (d != null) hash.put(card,d.doubleValue()-money);
+		if (d != null) hash.put(card,d.doubleValue() - money);
 		else throw new NotExistsCardOperation();
 	}
 	
