@@ -1,0 +1,1 @@
+protoc --plugin=protoc-gen-grpc-java=protoc-gen-grpc-java-1.33.0-windows-x86_64.exe   --grpc-java_out="H:/temp/java/grpc/src/main/java/" --java_out="H:/temp/java/grpc/src/main/java/" --proto_path="H:/temp/java/grpc/src/main/proto" grpc.hello.proto

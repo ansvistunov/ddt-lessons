@@ -2,6 +2,7 @@ package grpcex2;
 import com.google.protobuf.Empty;
 import grpc.ex2.*;
 import io.grpc.*;
+import io.grpc.protobuf.services.ProtoReflectionService;
 import io.grpc.stub.StreamObserver;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,7 +13,7 @@ public class BillingService extends BillingServiceStreamGrpc.BillingServiceStrea
         Server server = ServerBuilder
                 .forPort(8080)
                 .addService(new BillingService())
-                //.addService(ProtoReflectionService.newInstance())
+                .addService(ProtoReflectionService.newInstance())
                 .build();
         server.start();
         System.out.println("Server started");

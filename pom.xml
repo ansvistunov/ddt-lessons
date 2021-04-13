@@ -40,6 +40,13 @@
             <version>1.32.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-services</artifactId>
+            <version>1.32.2</version>
+        </dependency>
+
+
     </dependencies>
 
 
@@ -98,7 +105,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
