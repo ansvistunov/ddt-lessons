@@ -7,7 +7,7 @@ import java.util.*;
 
 public class BillingClient {
     public static final int port = 8080;
-    public static final String url = "http://localhost:%d/BillingService";
+    public static final String url = "http://localhost:%d/BillingService?wsdl";
     static BillingService service;
 
     public static void main(String[] args) throws Exception {

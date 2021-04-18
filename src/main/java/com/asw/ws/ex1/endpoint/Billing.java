@@ -7,7 +7,7 @@ import java.util.HashMap;
 @WebService()
 public class Billing {
 	private HashMap<String,Card> hash;
-	
+
 	public Billing(){
 		hash = new HashMap<>();
 	}
