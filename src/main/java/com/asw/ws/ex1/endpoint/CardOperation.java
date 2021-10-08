@@ -7,13 +7,12 @@
 package com.asw.ws.ex1.endpoint;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
  * @author Alexey Svistunov
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class CardOperation {
 	public CardOperation(){}
@@ -25,4 +24,17 @@ public class CardOperation {
 	public String card;
 	public double amount;
 	public Date operationDate;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		CardOperation that = (CardOperation) o;
+		return Double.compare(that.amount, amount) == 0 && card.equals(that.card) && operationDate.equals(that.operationDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(card, amount, operationDate);
+	}
 }

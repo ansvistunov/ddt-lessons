@@ -7,6 +7,7 @@ public class RMIClient {
     public static void main(String[] args) {
         String host = (args.length < 1) ? null : args[0];
         int port = 8080;//1099 - default port
+        //int port = 1099;
         //System.setSecurityManager(new SecurityManager());
         try {
             Registry registry = LocateRegistry.getRegistry(host, port);

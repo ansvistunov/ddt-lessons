@@ -8,9 +8,6 @@ package com.asw.rmi.ex2;
 
 /**
  * @author Alexey Svistunov
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 import java.rmi.*;
 import java.util.Date;

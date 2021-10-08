@@ -20,11 +20,13 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 	 * @see com.asw.rmi.ex1.BillingService#addNewCard(java.lang.String)
 	 */
 	public static final int registryPort = 8080;
+	//public static final int registryPort = 1099;
 	public static final int proxyPort = 443;
 
 	private	HashMap<String, Double> hash;
 	public BillingServiceImpl() throws RemoteException{
-		super(proxyPort);
+		//super(proxyPort);
+		super();
 		hash = new HashMap<>();
 	}
 	public void addNewCard(String personName, String card) throws RemoteException {

@@ -15,6 +15,7 @@ import org.apache.kafka.streams.state.KeyValueIterator;
 import org.apache.kafka.streams.state.QueryableStoreTypes;
 import org.apache.kafka.streams.state.ReadOnlyKeyValueStore;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
@@ -24,6 +25,7 @@ public class BillingServer {
     public static final String BALANCE_QUERY_TOPIC = "billing-guery";
     public static final String BALANCE_RESPONSE_TOPIC = "billing-request";
     public static final String KEY_VALUE_STORE_NAME = "BillingStore";
+    public static final String broker = "localhost:8080";
     public static void main(String[] args) {
         String serializer = StringSerializer.class.getName();
         String deserializer = StringDeserializer.class.getName();
@@ -34,7 +36,7 @@ public class BillingServer {
         final Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "billing");
         props.put("group.id", username + "-consumer");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
         props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, CardOperationSerde.class.getName());
@@ -110,7 +112,7 @@ public class BillingServer {
 
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
-            String out = "\r";
+            String out = "\r"+new Date()+" ";
             if (!records.isEmpty()){
                 for(ConsumerRecord<String, String> record: records) {
                     Double balance = keyValueStore.get(record.value());

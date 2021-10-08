@@ -3,10 +3,11 @@ package com.asw.ws.ex1.endpoint;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.HashMap;
+import java.util.Map;
 
 @WebService()
 public class Billing {
-	private HashMap<String,Card> hash;
+	private Map<String,Card> hash;
 
 	public Billing(){
 		hash = new HashMap<>();

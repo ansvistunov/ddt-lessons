@@ -1,15 +1,17 @@
 package com.asw.jms.ex1;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+
 import javax.jms.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BillingService implements Runnable{
-    public static final String url = "tcp://localhost:61616";
+public class BillingService implements Runnable {
+    public static final String url = "tcp://localhost:8080";
     public static final String queueName = "Billing";
     private final ConcurrentHashMap<String, Card> cards;
-    public BillingService(){
-         cards = new ConcurrentHashMap<>();
+
+    public BillingService() {
+        cards = new ConcurrentHashMap<>();
     }
 
     @Override
@@ -39,12 +41,18 @@ public class BillingService implements Runnable{
     public void addNewCard(Card c) {
         cards.putIfAbsent(c.cardNumber, c);
     }
-    public void performCardOperation(CardOperation co){
-        cards.computeIfPresent(co.card, (key, card)->{card.balance+=co.amount; return card;});
+
+    public void performCardOperation(CardOperation co) {
+        cards.computeIfPresent(co.card, (key, card) -> {
+            card.balance += co.amount;
+            return card;
+        });
     }
-    public void printCards(){
-    	System.out.println(cards);
+
+    public void printCards() {
+        System.out.println(cards);
     }
+
     public static void main(String[] args) {
         new Thread(new BillingService()).start();
     }

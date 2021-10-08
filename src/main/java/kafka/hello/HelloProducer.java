@@ -37,7 +37,7 @@ public class HelloProducer {
 
         while (true){
             //synchro writes
-            //producer.send(new ProducerRecord<String, String>(topicName, "Hello world "+i)).get();
+            //producer.send(new ProducerRecord<String, String>(topicName, "Hello world "+count)).get();
             producer.send(new ProducerRecord<String, String>(topicName, "Hello world "+count),
                     (recordMetadata, e) -> System.out.println(String.format("message send. offset:%s i:%s",recordMetadata.offset(),count))
             );

@@ -75,9 +75,13 @@ public class KafkaExample {
     }
 
     public static void main(String[] args) {
-        String brokers = System.getenv("CLOUDKARAFKA_BROKERS");
-        String username = System.getenv("CLOUDKARAFKA_USERNAME");
-        String password = System.getenv("CLOUDKARAFKA_PASSWORD");
+        String username="admin";
+        String password = "admin-secret";
+        String brokers = "localhost:8080";
+
+        //String brokers = System.getenv("CLOUDKARAFKA_BROKERS");
+        //String username = System.getenv("CLOUDKARAFKA_USERNAME");
+        //String password = System.getenv("CLOUDKARAFKA_PASSWORD");
         KafkaExample c = new KafkaExample(brokers, username, password);
         c.produce();
         c.consume();

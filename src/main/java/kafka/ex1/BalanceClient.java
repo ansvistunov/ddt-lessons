@@ -8,17 +8,14 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import java.util.Arrays;
-import java.util.Properties;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class BalanceClient {
     final static int cardCount = 3;
     public static void main(String[] args) throws Exception {
         String username = "admin";
         String password = "admin-secret";
-        String brokers = "localhost:9092";
+        String brokers = "localhost:8080";
         String jaasTemplate = "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, username, password);
         String serializer = StringSerializer.class.getName();
@@ -56,7 +53,7 @@ public class BalanceClient {
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
             if (!records.isEmpty()){
-                String out = "\r";
+                String out = "\r"+new Date()+" ";
                 for(ConsumerRecord<String, String> record: records) {
                     out = out + String.format("%s for %s", record.value(), record.key()) + "\t";
                     writeProgressBar(out);
