@@ -3,7 +3,7 @@ import grpc.ex1.*;
 import io.grpc.*;
 public class BillingCllient {
     public static void main(String[] args) {
-        BillingServiceGrpc.BillingServiceBlockingStub client = createClient("localhost",8080);
+        BillingServiceGrpc.BillingServiceBlockingStub client = createClient("localhost",7080);
         System.out.println("Connected to server");
         AddNewCardRequest cardRequest = AddNewCardRequest.newBuilder().setCard("1").setPersonname("Ivan").build();
         client.addNewCard(cardRequest);

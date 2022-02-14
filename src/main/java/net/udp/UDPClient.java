@@ -8,8 +8,8 @@ public class UDPClient {
         // args give message contents and destination hostname
         try {
             int serverPort = 8080;
-            String serverHost = args[1];
-            String msg = args[0];
+            String serverHost = "localhost";//'args[1];
+            String msg = "Hello yuiyuiyuiyuiyiuyui world";//args[0];
 
             DatagramSocket aSocket = new DatagramSocket();      // create socket
             byte[] message = msg.getBytes();

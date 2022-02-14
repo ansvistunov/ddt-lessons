@@ -17,6 +17,7 @@ public class BillingClient {
         String username = "admin";
         String password = "admin-secret";
         String brokers = "localhost:8080";
+        //String brokers = "localhost:9092";
         String jaasTemplate = "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, username, password);
         String serializer = StringSerializer.class.getName();

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @author : Alex
- * @created : 11.03.2021, четверг
+ * created : 11.03.2021, четверг
  **/
 
 
@@ -26,10 +26,10 @@ public class WildCardTest {
     }
 
     public static void main(String[] args) {
-        List<Animal> animals = Arrays.asList(new Animal[]{new Animal(), new Animal()});
+        List<Animal> animals = Arrays.asList(new Animal(), new Animal());
         feedAllAnimal(animals);
 
-        List<Dog> dogs = Arrays.asList(new Dog[]{new Dog(), new Dog()});
+        List<Dog> dogs = Arrays.asList(new Dog(), new Dog());
         //feedAllAnimal(dogs); //Ошибка компиляции
         wildcardFeedAllAnimal(dogs); //Ошибки нет
     }

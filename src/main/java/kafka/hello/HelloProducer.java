@@ -9,7 +9,7 @@ import java.util.Properties;
 public class HelloProducer {
     static int count = 0;
     public static void main(String[] args) throws Exception{
-        String username=args[0];
+        String username = args[0];
         String password = args[1];
         String brokers = args[2];
         String topicName = args[3];

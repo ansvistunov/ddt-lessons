@@ -14,7 +14,7 @@ public class BillingClient {
     }
     public static void main(String[] args) throws Exception{
         final int cardCount = 5, operationCount = 100000;
-        BillingServiceStreamGrpc.BillingServiceStreamStub asyncClient = createClient("localhost",8080);
+        BillingServiceStreamGrpc.BillingServiceStreamStub asyncClient = createClient("localhost",7080);
         System.out.println("Connected to server");
 
         final CountDownLatch addCardsLatch = new CountDownLatch(cardCount);

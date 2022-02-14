@@ -6,7 +6,7 @@ import javax.jms.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BillingService implements Runnable {
-    public static final String url = "tcp://localhost:8080";
+    public static final String url = "tcp://localhost:61616";
     public static final String queueName = "Billing";
     private final ConcurrentHashMap<String, Card> cards;
 
@@ -27,7 +27,7 @@ public class BillingService implements Runnable {
             //Create consumer
             MessageConsumer consumer = session.createConsumer(queue);
             //Create MessageListener
-            MessageListener listener = new ObjectListener(new BillingService());
+            MessageListener listener = new ObjectListener(this);
             //Register message listener
             consumer.setMessageListener(listener);
             //Start process connection

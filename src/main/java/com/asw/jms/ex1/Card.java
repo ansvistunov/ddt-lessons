@@ -9,13 +9,6 @@ package com.asw.jms.ex1;
 import java.io.Serializable;
 import java.util.*;
 
-
-/**
- * @author Alexey Svistunov
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 public class Card implements Serializable{
 	public Card(String person, Date createDate, String cardNumber,double balance){
 		this.person = person;

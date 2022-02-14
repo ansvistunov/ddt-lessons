@@ -16,7 +16,7 @@ public class EchoServer extends EchoServiceGrpc.EchoServiceImplBase {
 
     public static void main(String[] args) throws Exception{
         Server server = ServerBuilder
-                .forPort(8080)
+                .forPort(7080)
                 .addService(new EchoServer()).build();
         server.start();
         System.out.println("Server started");

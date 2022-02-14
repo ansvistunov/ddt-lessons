@@ -26,6 +26,7 @@ public class BillingServer {
     public static final String BALANCE_RESPONSE_TOPIC = "billing-request";
     public static final String KEY_VALUE_STORE_NAME = "BillingStore";
     public static final String broker = "localhost:8080";
+    //public static final String broker = "localhost:9092";
     public static void main(String[] args) {
         String serializer = StringSerializer.class.getName();
         String deserializer = StringDeserializer.class.getName();

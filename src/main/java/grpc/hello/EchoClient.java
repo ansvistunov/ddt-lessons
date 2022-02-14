@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class EchoClient {
     public static void main(String[] args) {
-        EchoServiceGrpc.EchoServiceBlockingStub client = createClient("localhost",8080);
+        EchoServiceGrpc.EchoServiceBlockingStub client = createClient("localhost",7080);
         System.out.println("Connected to server");
         Scanner console = new Scanner(System.in);
         String message;

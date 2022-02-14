@@ -11,7 +11,7 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
 public class BillingService extends BillingServiceStreamGrpc.BillingServiceStreamImplBase{
     public static void main(String[] args) throws Exception{
         Server server = ServerBuilder
-                .forPort(8080)
+                .forPort(7080)
                 .addService(new BillingService())
                 .addService(ProtoReflectionService.newInstance())
                 .build();

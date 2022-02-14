@@ -7,8 +7,8 @@ public class TCPClient {
     public static void main(String args[]) {
         // arguments supply message and hostname
         int serverPort = 8080;
-        String serverHost = args[1];
-        String message = args[0];
+        String serverHost = "localhost";//args[1];
+        String message = "Hello hkjhjhkjhkjhkj world";//args[0];
         try (Socket s = new Socket(serverHost, serverPort)) {
             System.out.println("Connected to "+serverHost);
             DataInputStream in = new DataInputStream(s.getInputStream());
