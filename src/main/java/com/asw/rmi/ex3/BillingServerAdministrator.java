@@ -7,7 +7,7 @@
 package com.asw.rmi.ex3;
 
 import java.rmi.*;
-import java.rmi.activation.*;
+//import java.rmi.activation.*;
 import java.util.*;
 /**
  * @author Alexey Svistunov
@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class BillingServerAdministrator {
 	private static void startServer(String policy,String codebase) throws Exception {
-		System.setSecurityManager(new SecurityManager());
+		/*System.setSecurityManager(new SecurityManager());
 		/////
 		Properties prop = new Properties();
 		prop.put("java.security.policy",policy);
@@ -29,7 +29,7 @@ public class BillingServerAdministrator {
 		System.out.println("Ready to BillingServerImpl stub");
 		Naming.rebind("BillingServer",ss);
 		System.out.println("Bound object to registry");
-		System.exit(0);
+		System.exit(0);*/
 	}
 	private static void terminateServer(String hostname) throws Exception {
 		System.out.println("Locating server...");

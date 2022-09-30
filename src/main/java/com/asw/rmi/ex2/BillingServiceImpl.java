@@ -24,8 +24,8 @@ public class BillingServiceImpl extends UnicastRemoteObject implements BillingSe
 
 	private	HashMap<String, Card> hash;
 	public BillingServiceImpl() throws RemoteException{
-		//super(proxyPort);
-		super();
+		super(proxyPort);
+		//super();
 		hash = new HashMap<>();
 	}
 	public void addNewCard(Card card) throws RemoteException {
