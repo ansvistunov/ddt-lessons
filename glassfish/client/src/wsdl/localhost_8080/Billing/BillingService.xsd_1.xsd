@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://endpoint.ex1.ws.asw.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://endpoint.ex1.ws.asw.com/">
+
+<xs:element name="addMoney" type="tns:addMoney"/>
+
+<xs:element name="addMoneyResponse" type="tns:addMoneyResponse"/>
+
+<xs:element name="addNewCard" type="tns:addNewCard"/>
+
+<xs:element name="addNewCardResponse" type="tns:addNewCardResponse"/>
+
+<xs:element name="getCard" type="tns:getCard"/>
+
+<xs:element name="getCardResponse" type="tns:getCardResponse"/>
+
+<xs:element name="processOperation" type="tns:processOperation"/>
+
+<xs:element name="processOperationResponse" type="tns:processOperationResponse"/>
+
+<xs:complexType name="addNewCard">
+<xs:sequence>
+<xs:element name="arg0" type="tns:card" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="card">
+<xs:sequence>
+<xs:element name="person" type="xs:string" minOccurs="0"/>
+<xs:element name="createDate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="cardNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="balance" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addNewCardResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="addMoney">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addMoneyResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCard">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCardResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:card" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="processOperation">
+<xs:sequence>
+<xs:element name="arg0" type="tns:cardOperation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cardOperation">
+<xs:sequence>
+<xs:element name="card" type="xs:string" minOccurs="0"/>
+<xs:element name="amount" type="xs:double"/>
+<xs:element name="operationDate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="processOperationResponse">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
