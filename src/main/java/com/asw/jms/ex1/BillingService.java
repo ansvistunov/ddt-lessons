@@ -17,7 +17,9 @@ public class BillingService implements Runnable {
     @Override
     public void run() {
         try {
-            ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
+            ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
+            //fix Forbidden class com.asw.jms.ex1.CardOperation
+            connectionFactory.setTrustAllPackages(true);
             // Create a Connection
             Connection connection = connectionFactory.createConnection();
             // Create a Session
