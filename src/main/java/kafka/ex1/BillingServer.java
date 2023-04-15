@@ -22,7 +22,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class BillingServer {
     public static final String BILLING_OPERATION_TOPIC = "billing-operation-in";
-    public static final String BALANCE_QUERY_TOPIC = "billing-guery";
+    public static final String BALANCE_QUERY_TOPIC = "billing-query";
     public static final String BALANCE_RESPONSE_TOPIC = "billing-request";
     public static final String KEY_VALUE_STORE_NAME = "BillingStore";
     public static final String broker = "localhost:8080";
